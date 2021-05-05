@@ -1,0 +1,374 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earthify</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css ">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+</head>
+<body>
+    
+<!-- header section starts  -->
+
+<header>
+
+<a href="#" class="logo"><i class="fas fa-seedling"></i>Earthify</a>
+
+<nav class="navbar">
+    <ul>
+        <li><a href="#home">home</a></li>
+        <li><a href="#about">about</a></li>
+        <li><a href="#service">service</a></li>
+        <li><a href="#project">Images</a></li>
+        
+        <li><a href="#post">projects</a></li>
+        {% if user.is_authenticated %}
+        <li>Hello, {{user.first_name}}</li>
+        <li><a href="#donate">donate</a></li>
+        <li><a href="accounts/logout">Sign Out</a></li>
+        
+        
+        {% else %}
+        <li><a href="accounts/register">Sign Up</a></li>
+        <li><a href="accounts/login">Sign In</a></li>
+        {% endif%}
+
+    </ul>
+</nav>
+
+<div class="fas fa-bars"></div>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+<div class="content">
+
+    <h1>save earth, save life</h1>
+    <p>Because the Earth is what we all have in common.</p>
+    <a href="https://www.nature.org/en-us/about-us/who-we-are/our-science/three-ways-to-save-our-planet/" target="_blank"><button class="btn">explore.</button></a>
+
+</div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- about section starts  -->
+
+<section class="about" id="about">
+
+<h1 class="heading"> <i class="fas fa-quote-left"></i> about us <i class="fas fa-quote-right"></i> </h1>
+
+<div class="row">
+
+    <div class="image">
+        <img src="{% static 'images/about-img.jpg' %}" alt="">
+    </div>
+
+    <div class="content">
+        <h3>together we can save the planet</h3>
+        <p>Our world needs transformational change. It’s time for the world to hold sectors accountable for their role in our environmental crisis while also calling for bold, creative, and innovative solutions. This will require action at all levels, from business and investment to city and national government.
+
+            <br><br>That’s where you come in: As an individual, you yield real power and influence as a consumer, a voter, and a member of a community that can unite for change.
+            
+            <br><br>Don’t underestimate your power. When your voice and your actions are united with thousands or millions of others around the world, we create a movement that is inclusive, impactful, and impossible to ignore.
+            
+            <br><br>Every Earth Day can drive a year of energy, enthusiasm, and commitment to create a new plan of action for our planet.</p>
+        <a href="#"><button class="btn">learn more</button></a>
+    </div>
+
+</div>
+
+<div class="box-container">
+
+    <div class="box">
+        <i class="fas fa-users"></i>
+        <h3>1000+</h3>
+        <p>volunteers</p>
+    </div>
+
+    <div class="box">
+        <i class="fas fa-tree"></i>
+        <h3>1500+</h3>
+        <p>trees planted</p>
+    </div>
+
+    <div class="box">
+        <i class="fas fa-donate"></i>
+        <h3>2000+</h3>
+        <p>donators</p>
+    </div>
+
+</div>
+
+</section>
+
+<!-- about section ends -->
+
+<!-- service section starts  -->
+
+<section class="service" id="service">
+
+<h1 class="heading"> <i class="fas fa-quote-left"></i> our services <i class="fas fa-quote-right"></i> </h1>
+
+<div class="box-container">
+
+    <div class="box">
+        <i class="fas fa-seedling"></i>
+        <h3>tree planting</h3>
+        <p>Tree-planting is the process of transplanting tree seedlings, generally for forestry, land reclamation, or landscaping purpose.In silviculture the activity is known as reforestation, or afforestation.</p>
+        <a href="https://en.wikipedia.org/wiki/Tree_planting">read more>></a>
+    </div>
+
+    <div class="box">
+        <i class="fas fa-recycle"></i>
+        <h3>recycle</h3>
+        <p>Recycling is the process of converting waste materials into new materials and objects.The recyclability of a material depends on its ability to reacquire the properties it had in its original state</p>
+        <a href="https://en.wikipedia.org/wiki/Recycling" target="_blank">read more>></a>
+    </div>
+
+    <div class="box">
+        <i class="fas fa-hand-holding-water"></i>
+        <h3>water conservation</h3>
+        <p>Water conservation includes all the policies, strategies and activities to sustainably manage the natural resource of fresh water, to protect the hydrosphere, and to meet the current and future human demand. </p>
+        <a href="https://en.wikipedia.org/wiki/Water_conservation" target="_blank">read more>></a>
+    </div>
+
+    <div class="box">
+        <i class="fas fa-tree"></i>
+        <h3>tree saving</h3>
+        <p>Speak up to save the tree, rather than just letting it get cut down. Get together with other people who care about saving trees in your area and make it clear that you object to cutting down healthy trees.</p>
+        <a href="http://savetreessaveearth.com/save-trees/" target="_blank">read more>></a>
+    </div>
+
+    
+
+</div>
+
+</section>
+
+<!-- service section ends -->
+
+<!-- project section starts  -->
+
+<section class="project" id="project">
+
+<h1 class="heading"> <i class="fas fa-quote-left"></i> image gallery <i class="fas fa-quote-right"></i> </h1>
+
+<div class="box-container">
+
+    {% for post in posts %}
+    <div class="box">
+        <img src="{% static 'images/img1.jpg' %}" alt="">
+        <div class="icons">
+            <a style="--i:1;" href="#" class="fas fa-heart"></a>
+            <a style="--i:2;" href="#" class="fas fa-share"></a>
+            <a style="--i:3;" href="#" class="fas fa-comment"></a>
+        </div>
+    </div>
+    {% endfor %}
+
+    
+
+    <div class="box">
+        <img src="{% static 'images/img2.jpg' %}" alt="">
+        <div class="icons">
+            <a style="--i:1;" href="#" class="fas fa-heart"></a>
+            <a style="--i:2;" href="#" class="fas fa-share"></a>
+            <a style="--i:3;" href="#" class="fas fa-comment"></a>
+        </div>
+    </div>
+    
+    <div class="box">
+        <img src="{% static 'images/img3.jpg' %}" alt="">
+        <div class="icons">
+            <a style="--i:1;" href="#" class="fas fa-heart"></a>
+            <a style="--i:2;" href="#" class="fas fa-share"></a>
+            <a style="--i:3;" href="#" class="fas fa-comment"></a>
+        </div>
+    </div>
+
+    <div class="box">
+        <img src="{% static 'images/img4.jpg' %}" alt="">
+        <div class="icons">
+            <a style="--i:1;" href="#" class="fas fa-heart"></a>
+            <a style="--i:2;" href="#" class="fas fa-share"></a>
+            <a style="--i:3;" href="#" class="fas fa-comment"></a>
+        </div>
+    </div>
+
+    <div class="box">
+        <img src="{% static 'images/img5.jpg' %}" alt="">
+        <div class="icons">
+            <a style="--i:1;" href="#" class="fas fa-heart"></a>
+            <a style="--i:2;" href="#" class="fas fa-share"></a>
+            <a style="--i:3;" href="#" class="fas fa-comment"></a>
+        </div>
+    </div>
+
+    <div class="box">
+        <img src="{% static 'images/img6.jpg' %}" alt="">
+        <div class="icons">
+            <a style="--i:1;" href="#" class="fas fa-heart"></a>
+            <a style="--i:2;" href="#" class="fas fa-share"></a>
+            <a style="--i:3;" href="#" class="fas fa-comment"></a>
+        </div>
+    </div>
+   
+
+</div>
+
+</section>
+
+<!-- project section ends -->
+
+<!-- donate section starts  -->
+{% if user.is_authenticated %}
+
+<section class="donate" id="donate">
+
+<h1 class="heading"> <i class="fas fa-quote-left"></i> donate us <i class="fas fa-quote-right"></i> </h1>
+
+<div class="video-container">
+    <video src="{% static 'images/video.mp4' %}" loop autoplay muted></video>
+    
+</div>
+
+<div class="form-container">
+
+    <form action="">
+        
+        <p style="color: white; font-size: 26px;"><em>"Can't plant a tree? Don’t worry, we got your back"</em></p>
+
+        <div class="inputBox">
+            <input type="text" placeholder="first name">
+            <input type="text" placeholder="last name">
+        </div>
+
+        <div class="inputBox">
+            <input type="email" placeholder="enter your email">
+            <input type="number" placeholder="donation amount ( in ₹ )">
+            <!--<select name="" id="">
+                <option value="" selected disabled>donation amount</option>
+                <option value="$5">$5</option>
+                <option value="$10">$10</option>
+                <option value="$15">$15</option>
+                <option value="$20">$20</option>
+            </select>
+        -->
+        </div>
+
+        <textarea name="" id="" cols="30" rows="10" placeholder="message ( optional )"></textarea>
+
+        <input type="submit" class="btn">
+
+    </form>
+
+</div>
+
+</section>
+{% endif %}
+
+<!-- donate section ends -->
+
+<!-- post section starts  -->
+
+<section class="post" id="post">
+
+<h1 class="heading"> <i class="fas fa-quote-left"></i> our projects <i class="fas fa-quote-right"></i> </h1>
+
+<div class="box-container">
+    {% for proj in projs %}
+    <div class="box">
+        <img src="{{proj.img.url}}" alt="">
+        <div class="content">
+            <span> <i class="fas fa-calendar"></i> {{proj.date}} </span>
+            <h3>{{proj.name}}</h3>
+            <p>{{proj.desc}}</p>
+            <a href="{{proj.hlink}}" target="_blank"><button class="btn">read more</button></a>
+        </div>
+    </div>
+    {% endfor %}
+    <!--
+    <div class="box">
+        <img src="images/img3.jpg" alt="">
+        <div class="content">
+            <span> <i class="fas fa-calendar"></i> 10 July, 2020 </span>
+            <h3>Project 2</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo veritatis nostrum voluptates cumque deserunt incidunt, minus mollitia rem molestiae ad.</p>
+            <a href="#"><button class="btn">read more</button></a>
+        </div>
+    </div>
+
+    <div class="box">
+        <img src="images/img6.jpg" alt="">
+        <div class="content">
+            <span> <i class="fas fa-calendar"></i> 24 December, 2020 </span>
+            <h3>Shift cultivation</h3>
+            <p>Shifting cultivation is an agricultural system in which plot of land are cultivated temporarily, then abandoned while post-disturbance fallow vegetation is allowed to freely grow while the cultivator moves on to another plot.</p>
+            <a href="https://en.wikipedia.org/wiki/Shifting_cultivation" target="_blank"><button class="btn">read more</button></a>
+        </div>
+    </div>
+    -->
+
+</div>
+
+</section>
+
+<!-- post section ends -->
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+<div class="box-container">
+
+    <div class="box">
+        <a href="#" class="logo"><i class="fas fa-seedling"></i>Earthify</a>
+        
+    </div>
+
+    <div class="box">
+        <a href="#">facebook</a>
+        <a href="#">twitter</a>
+        <a href="#">instagram</a>
+        <a href="#">github</a>
+    </div>
+
+    <div class="box">
+        <h3 class="letter">
+            Newsletter
+            <a href="mailto:earthify@gmail.com"><button class="fas fa-paper-plane"></button></a>
+        </h3>
+        <!--<form action="">
+            <input type="text" placeholder="Name">
+        </form>
+        -->
+    </div>
+
+</div>
+
+<h1 class="credit">created by <span>Raj Panjwani</span> | all rights reserved. </h1>
+
+</section>
+
+<!-- footer section ends -->
+
+<!-- custom js file link  -->
+<script src="{% static 'js/main.js'%}"></script>
+
+</body>
+</html>

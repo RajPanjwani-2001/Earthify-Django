@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>َAnimated Registration Form</title>
+  <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+
+  <form class="box" action="register" method="post">
+    {% csrf_token %}
+    <h1>Sign Up</h1>
+    <input type="text" name="first_name" placeholder="First Name">
+    <input type="text" name="last_name" placeholder="Last Name">
+    <input type="text" name="username" placeholder="Username">
+    <input type="email" name="email" placeholder="Email Adress">
+    <input type="password" name="password1" placeholder="Password">
+    <input type="password" name="password2" placeholder="Confirm Password">
+    
+    <input type="submit" name="" value="Sign Up">
+  </form>
+
+  <div>
+    {% for message in messages %}
+    <h3>{{message}}</h3>
+    {% endfor %}
+  </div>
+
+</body>
+
+</html>
